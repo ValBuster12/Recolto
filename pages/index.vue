@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col md:flex-row flex-grow h-full">
-    <FlexForm
+    <TableForm
       class="w-full md:w-1/2 md:max-w-none z-[1002] overflow-auto md:max-h-full"
       :roof-surface="roofSurface"
       :roof-center="roofCenter"
@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import L from "leaflet";
 import RecoltoMap from "../components/map/RecoltoMap.vue";
-import FlexForm from "~/components/FlexForm.vue";
+import TableForm from "~/components/tableCalculator/TableForm.vue";
 
 definePageMeta({
   layout: "app",
