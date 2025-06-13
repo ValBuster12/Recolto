@@ -1,24 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row flex-grow h-full">
-    <recolto-calculator
+    <FlexForm
       class="w-1/2 md:max-w-none z-[1002] overflow-auto md:max-h-full"
-      :class="{
-        'h-[30rem] md:h-full scrolling-auto overflow-auto': currentStep === 2
-      }"
-
-      v-model:current-step="currentStep"
-
-      :roof-surface="roofSurface"
-      :roof-center="roofCenter"
-
-      :surface-garden-drawn="surfaceGardenDrawn"
-      :surface-vegetable-drawn="surfaceVegetableDrawn"
-      :force-reset-input="forceResetInput"
-
-      @newCenter="($e) => center = $e"
-      @draw-roof="allowDrawMap($event)"
-      @draw-water-usage="allowDrawMap($event)"
-      @disable-draw="drawEnabled = undefined"
     />
     <recolto-map
       class="w-1/2 h-64 md:h-full"
@@ -34,7 +17,7 @@
 <script setup lang="ts">
 import L from "leaflet";
 import RecoltoMap from "../components/map/RecoltoMap.vue";
-import RecoltoCalculator from "../components/calculator/RecoltoCalculator.vue";
+import FlexForm from "~/components/FlexForm.vue";
 
 definePageMeta({
   layout: "app",
