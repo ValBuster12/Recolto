@@ -1,10 +1,20 @@
 <template>
   <div class="flex flex-col md:flex-row flex-grow h-full">
-    <FlexForm
-      class="w-1/2 md:max-w-none z-[1002] overflow-auto md:max-h-full"
+    <RecoltoCalculator
+      class="w-full md:w-1/2 md:max-w-none z-[1002] overflow-auto md:max-h-full"
+      v-model:current-step="currentStep"
+      :roof-surface="roofSurface"
+      :roof-center="roofCenter"
+      :surface-garden-drawn="surfaceGardenDrawn"
+      :surface-vegetable-drawn="surfaceVegetableDrawn"
+      :force-reset-input="forceResetInput"
+      @draw-roof="allowDrawMap($event)"
+      @draw-water-usage="allowDrawMap($event)"
+      @disable-draw="allowDrawMap()"
+      @new-center="center = $event"
     />
     <recolto-map
-      class="w-1/2 h-64 md:h-full"
+      class="w-full md:w-1/2 h-64 md:h-full"
       :draw-enabled="drawEnabled"
       :center="center"
       @polygon:created="onPolygonCreated"
@@ -17,7 +27,7 @@
 <script setup lang="ts">
 import L from "leaflet";
 import RecoltoMap from "../components/map/RecoltoMap.vue";
-import FlexForm from "~/components/FlexForm.vue";
+import RecoltoCalculator from "~/components/calculator/RecoltoCalculator.vue";
 
 definePageMeta({
   layout: "app",
@@ -49,7 +59,11 @@ const drawEnabled = ref<{ area: "roof" | "garden" | "vegetable" | "allUsage", ac
  * Allow to active leaflet draw
  * According to the area, user can draw or clear layer in map
  */
-const allowDrawMap = (data: { area: "roof" | "garden" | "vegetable" | "allUsage", action?: "draw" | "clear" }) => {
+const allowDrawMap = (data?: { area: "roof" | "garden" | "vegetable" | "allUsage", action?: "draw" | "clear" }) => {
+  if (!data) {
+    drawEnabled.value = undefined
+    return
+  }
   if (data.action === "clear" && data.area === "garden") {
     // Reset value when user update manually surfaceGarden
     surfaceGardenDrawn.value = 0;
