@@ -1,8 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row flex-grow h-full">
-    <RecoltoCalculator
+    <FlexForm
       class="w-full md:w-1/2 md:max-w-none z-[1002] overflow-auto md:max-h-full"
-      v-model:current-step="currentStep"
       :roof-surface="roofSurface"
       :roof-center="roofCenter"
       :surface-garden-drawn="surfaceGardenDrawn"
@@ -10,7 +9,6 @@
       :force-reset-input="forceResetInput"
       @draw-roof="allowDrawMap($event)"
       @draw-water-usage="allowDrawMap($event)"
-      @disable-draw="allowDrawMap()"
       @new-center="center = $event"
     />
     <recolto-map
@@ -27,7 +25,7 @@
 <script setup lang="ts">
 import L from "leaflet";
 import RecoltoMap from "../components/map/RecoltoMap.vue";
-import RecoltoCalculator from "~/components/calculator/RecoltoCalculator.vue";
+import FlexForm from "~/components/FlexForm.vue";
 
 definePageMeta({
   layout: "app",
@@ -50,8 +48,6 @@ const forceResetInput= ref<null | {
   area: "garden" | "vegetable",
   newValue: number
 }>(null);
-
-const currentStep = ref(0);
 
 const drawEnabled = ref<{ area: "roof" | "garden" | "vegetable" | "allUsage", action?: "draw" | "clear" }>();
 
