@@ -1,9 +1,9 @@
 <template>
-  <div class="flex-grow relative">
+  <div class="flex flex-col md:flex-row flex-grow h-full">
     <recolto-calculator
-      class="absolute bottom-0 left-0 right-0 md:top-[10px] md:left-[10px] md:right-[unset] md:bottom-[unset] z-[1002] overflow-auto md:max-h-[95%] scrolling-auto"
+      class="w-full md:w-1/2 z-[1002] overflow-auto md:max-h-full"
       :class="{
-        'h-[30rem] md:h-[95%] scrolling-auto overflow-auto': currentStep === 2
+        'h-[30rem] md:h-full scrolling-auto overflow-auto': currentStep === 2
       }"
 
       v-model:current-step="currentStep"
@@ -21,6 +21,7 @@
       @disable-draw="drawEnabled = undefined"
     />
     <recolto-map
+      class="w-full md:w-1/2 h-64 md:h-full"
       :draw-enabled="drawEnabled"
       :center="center"
       @polygon:created="onPolygonCreated"
