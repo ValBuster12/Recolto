@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row flex-grow h-full">
     <recolto-calculator
-      class="w-full md:w-1/2 md:max-w-none z-[1002] overflow-auto md:max-h-full"
+      class="w-1/2 md:max-w-none z-[1002] overflow-auto md:max-h-full"
       :class="{
         'h-[30rem] md:h-full scrolling-auto overflow-auto': currentStep === 2
       }"
@@ -21,7 +21,7 @@
       @disable-draw="drawEnabled = undefined"
     />
     <recolto-map
-      class="w-full md:w-1/2 h-64 md:h-full"
+      class="w-1/2 h-64 md:h-full"
       :draw-enabled="drawEnabled"
       :center="center"
       @polygon:created="onPolygonCreated"
