@@ -45,45 +45,49 @@
         </div>
       </header>
 
-      <Step1
-        v-if="currentStep === 0"
-        :roof-surface="roofSurface"
-        v-model:roof-type="roofType"
-        v-model:has-sewage-system="selectedSewageSystem"
-        @next="changeStep(1)"
-        @new-center="$emit('newCenter', $event)"
-        @draw-roof="$emit('drawRoof', $event)"
-      />
-      <Step2
-        v-else-if="currentStep === 1"
-        v-model:surface-garden="surfaceGarden"
-        v-model:surface-vegetable="surfaceVegetable"
-        v-model:other-needs="otherNeeds"
-        v-model:toilets-connected="toiletsConnected"
-        v-model:washing-machine-connected="washingMachineConnected"
-        v-model:resident-number="residentNumber"
-        :surface-garden-drawn="surfaceGardenDrawn"
-        :surface-vegetable-drawn="surfaceVegetableDrawn"
-        :force-reset-input="forceResetInput"
-        @draw-water-usage="$emit('drawWaterUsage', $event)"
-        @next="changeStep(2)"
-        @previous="changeStep(0)"
-      />
+      <div ref="step1Ref" id="step1">
+        <Step1
+          :roof-surface="roofSurface"
+          v-model:roof-type="roofType"
+          v-model:has-sewage-system="selectedSewageSystem"
+          @next="changeStep(1)"
+          @new-center="$emit('newCenter', $event)"
+          @draw-roof="$emit('drawRoof', $event)"
+        />
+      </div>
 
-      <Step3
-        v-else-if="currentStep === 2"
-        :roof-surface="roofSurface"
-        :roof-absorbtion-coeff="roofType.coeff"
-        :roof-center="roofCenter"
-        :garden-surface="surfaceGarden"
-        :vegetable-surface="surfaceVegetable"
-        :other-needs="otherNeeds"
-        :toilets-connected="toiletsConnected"
-        :washing-machine-connected="washingMachineConnected"
-        :resident-number="residentNumber"
-        :has-sewage-system="selectedSewageSystem"
-        @previous="changeStep(1)"
-      />
+      <div ref="step2Ref" id="step2">
+        <Step2
+          v-model:surface-garden="surfaceGarden"
+          v-model:surface-vegetable="surfaceVegetable"
+          v-model:other-needs="otherNeeds"
+          v-model:toilets-connected="toiletsConnected"
+          v-model:washing-machine-connected="washingMachineConnected"
+          v-model:resident-number="residentNumber"
+          :surface-garden-drawn="surfaceGardenDrawn"
+          :surface-vegetable-drawn="surfaceVegetableDrawn"
+          :force-reset-input="forceResetInput"
+          @draw-water-usage="$emit('drawWaterUsage', $event)"
+          @next="changeStep(2)"
+          @previous="changeStep(0)"
+        />
+      </div>
+
+      <div ref="step3Ref" id="step3">
+        <Step3
+          :roof-surface="roofSurface"
+          :roof-absorbtion-coeff="roofType.coeff"
+          :roof-center="roofCenter"
+          :garden-surface="surfaceGarden"
+          :vegetable-surface="surfaceVegetable"
+          :other-needs="otherNeeds"
+          :toilets-connected="toiletsConnected"
+          :washing-machine-connected="washingMachineConnected"
+          :resident-number="residentNumber"
+          :has-sewage-system="selectedSewageSystem"
+          @previous="changeStep(1)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -129,6 +133,10 @@ const toiletsConnected = ref<boolean>(false)
 const washingMachineConnected = ref<boolean>(false)
 const residentNumber = ref<number>(0)
 
+const step1Ref = ref<HTMLElement | null>(null)
+const step2Ref = ref<HTMLElement | null>(null)
+const step3Ref = ref<HTMLElement | null>(null)
+
 defineProps<{
   // step 1
   roofSurface: number,
@@ -142,6 +150,16 @@ defineProps<{
 const changeStep = (step: number) => {
   currentStep.value = step
   emit("disableDraw");
+
+  if (step === 0) {
+    step1Ref.value?.scrollIntoView({ behavior: 'smooth' })
+  }
+  if (step === 1) {
+    step2Ref.value?.scrollIntoView({ behavior: 'smooth' })
+  }
+  if (step === 2) {
+    step3Ref.value?.scrollIntoView({ behavior: 'smooth' })
+  }
 };
 
 </script>
