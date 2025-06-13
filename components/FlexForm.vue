@@ -1,87 +1,70 @@
 <template>
-  <form class="flex flex-col gap-4">
-    <!-- Address row -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Address:</label>
-      <input type="text" class="flex-1 border rounded p-2" placeholder="Enter address" />
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Use current location</button>
-    </div>
-
-    <!-- Roof type row -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Roof Type:</label>
-      <button type="button" class="flex-1 sm:w-auto bg-gray-200 px-3 py-2 rounded">Tile</button>
-      <button type="button" class="flex-1 sm:w-auto bg-gray-200 px-3 py-2 rounded">Slate</button>
-      <button type="button" class="flex-1 sm:w-auto bg-gray-200 px-3 py-2 rounded">Flat</button>
-      <button type="button" class="flex-1 sm:w-auto bg-gray-200 px-3 py-2 rounded">Green</button>
-    </div>
-
-    <!-- Roof boundary row -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Roof Boundary:</label>
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Draw on map</button>
-      <input type="number" class="flex-1 border rounded p-2" placeholder="Surface" />
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Redraw</button>
-    </div>
-
-    <!-- Garden boundary row -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Garden Boundary:</label>
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Draw on map</button>
-      <input type="number" class="flex-1 border rounded p-2" placeholder="Surface" />
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Redraw</button>
-    </div>
-
-    <!-- Potager boundary row -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Potager Boundary:</label>
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Draw on map</button>
-      <input type="number" class="flex-1 border rounded p-2" placeholder="Surface" />
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Redraw</button>
-    </div>
-
-    <!-- Gutters linked to sewer -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Gutters linked to sewer?</label>
-      <input type="checkbox" class="mr-2" />
-      <button type="button" class="bg-purple text-white px-4 py-2 rounded">Calculate</button>
-    </div>
-
-    <!-- Results row -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Results:</label>
-      <div class="flex-1">Water needed</div>
-      <div class="flex-1">Optimum storage</div>
-      <div class="flex-1">Estimated savings</div>
-    </div>
-
-    <!-- Analysis row -->
-    <div class="flex flex-col gap-1">
-      <label class="font-semibold">Analysis of your needs, based on yearly rain levels</label>
-    </div>
-
-    <!-- Info row -->
-    <div class="flex flex-wrap items-center gap-2">
-      <label class="w-full sm:w-1/4 font-semibold">Info:</label>
-      <div class="flex-1">Last year known</div>
-      <div class="flex-1">Driest year</div>
-      <div class="flex-1">Wettest year</div>
-    </div>
-
-    <!-- Graph row -->
-    <div class="flex flex-col">
-      <label class="font-semibold">Estimation chart</label>
-      <div class="h-40 bg-gray-200 flex items-center justify-center">Graph here</div>
-    </div>
-  </form>
+  <div class="flex flex-col gap-4 text-white p-4 md:p-6 bg-primary/80 rounded-md">
+    <Step1
+      :roof-surface="roofSurface"
+      v-model:roof-type="roofType"
+      v-model:has-sewage-system="selectedSewageSystem"
+      @new-center="$emit('newCenter', $event)"
+      @draw-roof="$emit('drawRoof', $event)"
+    />
+    <Step2
+      v-model:surface-garden="surfaceGarden"
+      v-model:surface-vegetable="surfaceVegetable"
+      v-model:other-needs="otherNeeds"
+      v-model:toilets-connected="toiletsConnected"
+      v-model:washing-machine-connected="washingMachineConnected"
+      v-model:resident-number="residentNumber"
+      :surface-garden-drawn="surfaceGardenDrawn"
+      :surface-vegetable-drawn="surfaceVegetableDrawn"
+      :force-reset-input="forceResetInput"
+      @draw-water-usage="$emit('drawWaterUsage', $event)"
+    />
+    <Step3
+      :roof-surface="roofSurface"
+      :roof-absorbtion-coeff="roofType.coeff"
+      :roof-center="roofCenter"
+      :garden-surface="surfaceGarden"
+      :vegetable-surface="surfaceVegetable"
+      :other-needs="otherNeeds"
+      :toilets-connected="toiletsConnected"
+      :washing-machine-connected="washingMachineConnected"
+      :resident-number="residentNumber"
+      :has-sewage-system="selectedSewageSystem"
+    />
+  </div>
 </template>
 
-<script setup>
-// This component only provides a sample layout for the form using flexbox.
+<script setup lang="ts">
+import L from 'leaflet'
+import { RoofType } from '~/declaration'
+import Step1, { roofTypeList } from './calculator/Step1.vue'
+import Step2 from './calculator/Step2.vue'
+import Step3 from './calculator/Step3.vue'
+
+const emit = defineEmits([
+  'drawRoof',
+  'drawWaterUsage',
+  'newCenter'
+])
+
+const props = defineProps<{
+  roofSurface: number
+  roofCenter?: L.LatLng | L.LatLngLiteral
+  surfaceGardenDrawn: number
+  surfaceVegetableDrawn: number
+  forceResetInput: null | { area: 'garden' | 'vegetable'; newValue: number }
+}>()
+
+const roofType = ref<RoofType>(roofTypeList[0])
+const selectedSewageSystem = ref(true)
+const surfaceGarden = ref(0)
+const surfaceVegetable = ref(0)
+const otherNeeds = ref(0)
+const toiletsConnected = ref(false)
+const washingMachineConnected = ref(false)
+const residentNumber = ref(0)
 </script>
 
 <style scoped>
-/***** Colors from Tailwind theme *****/
 .bg-purple { @apply bg-purple-700; }
 </style>
-
