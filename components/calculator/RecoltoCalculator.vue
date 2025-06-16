@@ -2,8 +2,24 @@
   <div
     class="w-full max-w-full text-white p-4 md:p-6 bg-primary/80 rounded-t-md md:rounded-md"
   >
+    <h2 class="text-center font-semibold mb-2">{{ t('calculator.steps') }}</h2>
+    <div class="flex justify-between mb-4">
+      <UButton
+        v-for="(label, index) in stepLabels"
+        :key="index"
+        color="white"
+        variant="outline"
+        :trailing="false"
+        class="flex-1 mx-1"
+        :class="{ 'bg-purple text-white border-white': stepIndex === index }"
+        @click="stepIndex = index"
+      >
+        {{ label }}
+      </UButton>
+    </div>
     <div class="flex flex-col">
       <Step1
+        v-if="stepIndex === 0"
         :roof-surface="roofSurface"
         v-model:roof-type="roofType"
         v-model:has-sewage-system="selectedSewageSystem"
@@ -11,6 +27,7 @@
         @draw-roof="$emit('drawRoof', $event)"
       />
       <Step2
+        v-if="stepIndex === 1"
         v-model:surface-garden="surfaceGarden"
         v-model:surface-vegetable="surfaceVegetable"
         v-model:other-needs="otherNeeds"
@@ -23,6 +40,7 @@
         @draw-water-usage="$emit('drawWaterUsage', $event)"
       />
       <Step3
+        v-if="stepIndex === 2"
         :roof-surface="roofSurface"
         :roof-absorbtion-coeff="roofType.coeff"
         :roof-center="roofCenter"
@@ -34,6 +52,27 @@
         :resident-number="residentNumber"
         :has-sewage-system="selectedSewageSystem"
       />
+      <div class="flex justify-between mt-4">
+        <UButton
+          v-if="stepIndex > 0"
+          color="white"
+          variant="outline"
+          :trailing="false"
+          @click="previousStep"
+        >
+          {{ t('calculator.previous_step') }}
+        </UButton>
+        <div class="flex-1"></div>
+        <UButton
+          v-if="stepIndex < 2"
+          color="white"
+          variant="outline"
+          :trailing="false"
+          @click="nextStep"
+        >
+          {{ t('calculator.next_step') }}
+        </UButton>
+      </div>
     </div>
   </div>
 </template>
@@ -61,6 +100,24 @@ const otherNeeds = ref<number>(0)
 const toiletsConnected = ref<boolean>(false)
 const washingMachineConnected = ref<boolean>(false)
 const residentNumber = ref<number>(0)
+
+const stepIndex = ref(0)
+const stepLabels = computed(() => [
+  t('calculator.roof'),
+  t('calculator.habits'),
+  t('calculator.results')
+])
+
+const nextStep = () => {
+  if (stepIndex.value === 1) {
+    emit('drawWaterUsage', { area: 'allUsage', action: 'clear' })
+  }
+  stepIndex.value = Math.min(stepIndex.value + 1, 2)
+}
+
+const previousStep = () => {
+  stepIndex.value = Math.max(stepIndex.value - 1, 0)
+}
 
 defineProps<{
   // step 1
