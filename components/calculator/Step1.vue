@@ -44,23 +44,25 @@
           {{ t("step1.draw_roof") }}
         </UButton>
       </div>
-      <div v-else class="flex flex-wrap my-2 md:mt-6 md:mb-4 mx-2">
+      <div v-else class="flex flex-wrap items-center my-2 md:mt-6 md:mb-4 mx-2">
         <p class="w-2/3 text-base md:text-lg font-semibold">{{ t("step1.useful_surface") }}</p>
-        <p class="w-1/3 text-lg md:text-xl font-bold flex justify-end self-center">
-          {{ (props.roofSurface).toLocaleString(locale) }}&nbsp;m²
-        </p>
-        <UButton
-          v-if="roofSurface"
-          icon="i-heroicons-paint-brush-20-solid"
-          color="white"
-          variant="outline"
-          :trailing="false"
-          @click="$emit('drawRoof', { area: 'roof' })"
-          class="sm:h-12 sm:w-48 mx-auto my-2 flex justify-center items-center"
-          :ui="{ variant: { outline: 'shadow-sm bg-transparent text-white-900 dark:text-white ring-1 ring-inset ring-white dark:ring-white-400 focus:ring-2 focus:ring-purple dark:focus:ring-white hover:bg-purple' }}"
-        >
-          {{ t("calculator.redraw") }}
-        </UButton>
+        <div class="w-1/3 flex justify-end items-center">
+          <p class="text-lg md:text-xl font-bold">
+            {{ (props.roofSurface).toLocaleString(locale) }}&nbsp;m²
+          </p>
+          <UButton
+            v-if="roofSurface"
+            icon="i-heroicons-paint-brush-20-solid"
+            color="white"
+            variant="outline"
+            :trailing="false"
+            @click="$emit('drawRoof', { area: 'roof' })"
+            class="ml-2 my-2 sm:h-12 sm:w-48 flex justify-center items-center"
+            :ui="{ variant: { outline: 'shadow-sm bg-transparent text-white-900 dark:text-white ring-1 ring-inset ring-white dark:ring-white-400 focus:ring-2 focus:ring-purple dark:focus:ring-white hover:bg-purple' }}"
+          >
+            {{ t("calculator.redraw") }}
+          </UButton>
+        </div>
       </div>
     </SubStep>
     <SubStep
