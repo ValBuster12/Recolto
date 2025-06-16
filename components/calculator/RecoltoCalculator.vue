@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-full md:w-[28rem] md:max-w-[28rem] lg:w-[32rem] lg:max-w-[32rem] text-white p-4 md:p-6 bg-primary/80 rounded-t-md md:rounded-md"
+    class="w-full max-w-full text-white p-4 md:p-6 bg-primary/80 rounded-t-md md:rounded-md"
   >
     <div class="flex flex-col">
       <Step1
