@@ -12,17 +12,22 @@
         {{ t("step1.roof_type_info") }}
       </template>
       <div class="flex gap-3 flex-wrap justify-between">
-        <URadio
-          class="w-fit text-white font-semibold"
+        <UButton
           v-for="option of roofTypeList"
           :key="option.name"
-          input-class="border-purple text-purple dark:border-slate-700 dark:text-slate-700 dark:bg-slate-700"
-          v-model="selectedRoofType"
-          :value="option.name"
-          :label="t(option.label)"
-          @update:model-value="onRoofTypeSelection()"
-          :ui="{ label: 'font-semibold text-white text-base' }"
-        />
+          color="white"
+          variant="outline"
+          :trailing="false"
+          @click="selectRoofType(option.name)"
+          class="flex flex-col items-center w-20 md:w-24 h-20 md:h-24"
+          :class="{
+            'bg-purple text-white border-white': selectedRoofType === option.name,
+            'bg-white text-purple': selectedRoofType !== option.name,
+          }"
+        >
+          <UIcon :name="option.icon" class="w-6 h-6 mb-1" />
+          <span class="text-xs md:text-sm font-semibold">{{ t(option.label) }}</span>
+        </UButton>
       </div>
     </SubStep>
     <SubStep
@@ -101,11 +106,11 @@
 <script lang="ts">
 import { RoofType } from '~/declaration';
 
-export const roofTypeList: RoofType[] = [
-  { label: 'step1.slate', name: "ardoise", coeff: 0.8 },
-  { label: 'step1.tile', name: "tuile", coeff: 0.9 },
-  { label: 'step1.flat', name: "plat", coeff: 0.6 },
-  { label: 'step1.planted', name: "vegetal", coeff: 0.4 },
+export const roofTypeList: (RoofType & { icon: string })[] = [
+  { label: 'step1.slate', name: 'ardoise', coeff: 0.8, icon: 'i-heroicons-home' },
+  { label: 'step1.tile', name: 'tuile', coeff: 0.9, icon: 'i-heroicons-home-modern' },
+  { label: 'step1.flat', name: 'plat', coeff: 0.6, icon: 'i-heroicons-building-office-2' },
+  { label: 'step1.planted', name: 'vegetal', coeff: 0.4, icon: 'i-heroicons-sparkles' },
 ];
 </script>
 
@@ -122,7 +127,7 @@ const emit = defineEmits([
   "next",
 ]);
 
-const roofType = defineModel<RoofType>('roofType', {required: true})
+const roofType = defineModel<RoofType>('roofType', { required: true })
 const selectedRoofType = ref(roofType.value.name)
 
 const hasSewageSystem = defineModel<boolean>('hasSewageSystem', {required: true})
@@ -130,7 +135,8 @@ const props = defineProps<{
   roofSurface?: number,
 }>();
 
-const onRoofTypeSelection = () => {
-  roofType.value = roofTypeList.find((option) => option.name === selectedRoofType.value) ?? roofTypeList[0]
+const selectRoofType = (name: string) => {
+  selectedRoofType.value = name
+  roofType.value = roofTypeList.find((option) => option.name === name) ?? roofTypeList[0]
 }
 </script>

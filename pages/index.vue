@@ -1,32 +1,31 @@
 <template>
-  <div class="flex-grow relative">
-    <recolto-calculator
-      class="absolute bottom-0 left-0 right-0 md:top-[0px] md:left-[0px] md:right-[unset] md:bottom-[unset] z-[1002] overflow-auto md:max-h-[95%] scrolling-auto"
-      :class="{
-        'h-[30rem] md:h-[95%] scrolling-auto overflow-auto': currentStep === 2
-      }"
-
-      v-model:current-step="currentStep"
-
-      :roof-surface="roofSurface"
-      :roof-center="roofCenter"
-
-      :surface-garden-drawn="surfaceGardenDrawn"
-      :surface-vegetable-drawn="surfaceVegetableDrawn"
-      :force-reset-input="forceResetInput"
-
-      @newCenter="($e) => center = $e"
-      @draw-roof="allowDrawMap($event)"
-      @draw-water-usage="allowDrawMap($event)"
-      @disable-draw="drawEnabled = undefined"
-    />
-    <recolto-map
-      :draw-enabled="drawEnabled"
-      :center="center"
-      @polygon:created="onPolygonCreated"
-      @polygon:edited="onPolygonEdited"
-      @polygon:deleted="onPolygonDeleted"
-    />
+  <div class="flex flex-col md:flex-row flex-grow">
+    <div class="md:w-1/2 order-2 md:order-none">
+      <recolto-map
+        class="h-80 md:h-full"
+        :draw-enabled="drawEnabled"
+        :center="center"
+        @polygon:created="onPolygonCreated"
+        @polygon:edited="onPolygonEdited"
+        @polygon:deleted="onPolygonDeleted"
+      />
+    </div>
+    <div class="md:w-1/2 flex">
+      <recolto-calculator
+        class="w-full overflow-auto"
+        :class="{ 'h-[30rem]': currentStep === 2 }"
+        v-model:current-step="currentStep"
+        :roof-surface="roofSurface"
+        :roof-center="roofCenter"
+        :surface-garden-drawn="surfaceGardenDrawn"
+        :surface-vegetable-drawn="surfaceVegetableDrawn"
+        :force-reset-input="forceResetInput"
+        @newCenter="($e) => center = $e"
+        @draw-roof="allowDrawMap($event)"
+        @draw-water-usage="allowDrawMap($event)"
+        @disable-draw="drawEnabled = undefined"
+      />
+    </div>
   </div>
 </template>
 
