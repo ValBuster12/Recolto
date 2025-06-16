@@ -63,7 +63,24 @@
       "communal": "in your city",
       "departemental": "in your departement",
       "national": "at the national level"
-    }
+    },
+    "graph_rain_potential": "Recoverable rainfall potential",
+    "graph_water_needs": "Monthly rainwater needs",
+    "graph_storage_evolution": "Evolution of water storage in the collector"
+  },
+  "months": {
+    "jan": "Jan",
+    "feb": "Feb",
+    "mar": "Mar",
+    "apr": "Apr",
+    "may": "May",
+    "jun": "Jun",
+    "jul": "Jul",
+    "aug": "Aug",
+    "sep": "Sep",
+    "oct": "Oct",
+    "nov": "Nov",
+    "dec": "Dec"
   },
   "yes": "Yes",
   "no": "No",
