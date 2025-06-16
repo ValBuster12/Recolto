@@ -3,8 +3,6 @@
     <div class="md:w-1/2 flex">
       <recolto-calculator
         class="w-full overflow-auto"
-        :class="{ 'h-[30rem]': currentStep === 2 }"
-        v-model:current-step="currentStep"
         :roof-surface="roofSurface"
         :roof-center="roofCenter"
         :surface-garden-drawn="surfaceGardenDrawn"
@@ -13,7 +11,6 @@
         @newCenter="($e) => center = $e"
         @draw-roof="allowDrawMap($event)"
         @draw-water-usage="allowDrawMap($event)"
-        @disable-draw="drawEnabled = undefined"
       />
     </div>
     <div class="md:w-1/2 order-2 md:order-none">
@@ -56,8 +53,6 @@ const forceResetInput= ref<null | {
   area: "garden" | "vegetable",
   newValue: number
 }>(null);
-
-const currentStep = ref(0);
 
 const drawEnabled = ref<{ area: "roof" | "garden" | "vegetable" | "allUsage", action?: "draw" | "clear" }>();
 
