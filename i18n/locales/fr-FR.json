@@ -66,7 +66,8 @@
     },
     "graph_rain_potential": "Potentiel de précipitations récupérables",
     "graph_water_needs": "Besoin en eau de pluie par mois",
-    "graph_storage_evolution": "Évolution du stockage au sein du récupérateur"
+    "graph_storage_evolution": "Évolution du stockage au sein du récupérateur",
+    "data_source": "Cette estimation se base sur les données <a href=\"https://meteo.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">Météo France</a> de 1960 à {year}."
   },
   "months": {
     "jan": "Janv",

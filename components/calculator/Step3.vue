@@ -127,17 +127,7 @@
         :water-needs="chartData?.waterNeeds"
       />
       <div v-if="!loading" class="text-xs font-medium">
-        <p>
-          Cette estimation se base sur les données
-          <a
-            href="https://meteo.data.gouv.fr/"
-            target="_blank"
-            rel="noopener"
-          >
-            Météo France
-          </a>
-          de 1960 à {{ rainDataYearsInfo?.nearest }}.
-        </p>
+        <p v-html="t('step3.data_source', { year: rainDataYearsInfo?.nearest })" />
       </div>
     </div>
   </SubStep>
