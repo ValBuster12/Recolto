@@ -66,7 +66,8 @@
     },
     "graph_rain_potential": "Recoverable rainfall potential",
     "graph_water_needs": "Monthly rainwater needs",
-    "graph_storage_evolution": "Evolution of water storage in the collector"
+    "graph_storage_evolution": "Evolution of water storage in the collector",
+    "data_source": "This estimation is based on <a href=\"https://meteo.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">Météo France</a> data from 1960 to {year}."
   },
   "months": {
     "jan": "Jan",
