@@ -16,13 +16,14 @@
           variant="outline"
           :trailing="false"
           @click="selectRoofType(option.name)"
-          class="flex flex-col items-center w-20 md:w-24 h-20 md:h-24"
-          :class="{
-            'bg-purple text-white border-white': selectedRoofType === option.name,
-            'bg-white text-purple': selectedRoofType !== option.name,
-          }"
+          class="flex flex-col items-center w-20 md:w-24 h-24 md:h-28 border-2 rounded"
+          :class="selectedRoofType === option.name ? 'border-green-500' : 'border-blue-500'"
         >
-          <UIcon :name="option.icon" class="w-6 h-6 mb-1" />
+          <img
+            :src="option.image"
+            alt=""
+            class="w-12 h-12 object-cover mb-1 rounded"
+          />
           <span class="text-xs md:text-sm font-semibold">{{ t(option.label) }}</span>
         </UButton>
       </div>
@@ -90,11 +91,11 @@
 <script lang="ts">
 import { RoofType } from '~/declaration';
 
-export const roofTypeList: (RoofType & { icon: string })[] = [
-  { label: 'step1.slate', name: 'ardoise', coeff: 0.8, icon: 'i-heroicons-home' },
-  { label: 'step1.tile', name: 'tuile', coeff: 0.9, icon: 'i-heroicons-home-modern' },
-  { label: 'step1.flat', name: 'plat', coeff: 0.6, icon: 'i-heroicons-building-office-2' },
-  { label: 'step1.planted', name: 'vegetal', coeff: 0.4, icon: 'i-heroicons-sparkles' },
+export const roofTypeList: (RoofType & { image: string })[] = [
+  { label: 'step1.slate', name: 'ardoise', coeff: 0.8, image: '/assets/ardoise.jpg' },
+  { label: 'step1.tile', name: 'tuile', coeff: 0.9, image: '/assets/tuiles.jpeg' },
+  { label: 'step1.flat', name: 'plat', coeff: 0.6, image: '/assets/toit_plat.jpg' },
+  { label: 'step1.planted', name: 'vegetal', coeff: 0.4, image: '/assets/toit_vegetal.jpeg' },
 ];
 </script>
 
