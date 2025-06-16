@@ -2,7 +2,7 @@
   <div class="flex flex-col md:flex-row flex-grow">
     <div class="md:w-1/2 flex">
       <recolto-calculator
-        class="w-full overflow-auto"
+        class="w-full"
         :roof-surface="roofSurface"
         :roof-center="roofCenter"
         :surface-garden-drawn="surfaceGardenDrawn"
