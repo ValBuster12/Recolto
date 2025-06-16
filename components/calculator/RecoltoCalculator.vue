@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-full text-white p-4 md:p-6 bg-primary/80 rounded-t-md md:rounded-md"
+    class="w-full max-w-full text-white p-4 md:p-6 bg-primary/80 "
   >
     <h2 class="text-center font-semibold mb-2">{{ t('calculator.steps') }}</h2>
     <div class="flex flex-col gap-4">
