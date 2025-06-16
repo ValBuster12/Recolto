@@ -1,7 +1,7 @@
 <template>
   <div class="flex-grow relative">
     <recolto-calculator
-      class="absolute bottom-0 left-0 right-0 md:top-[10px] md:left-[10px] md:right-[unset] md:bottom-[unset] z-[1002] overflow-auto md:max-h-[95%] scrolling-auto"
+      class="absolute bottom-0 left-0 right-0 md:top-[0px] md:left-[0px] md:right-[unset] md:bottom-[unset] z-[1002] overflow-auto md:max-h-[95%] scrolling-auto"
       :class="{
         'h-[30rem] md:h-[95%] scrolling-auto overflow-auto': currentStep === 2
       }"
