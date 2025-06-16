@@ -45,6 +45,8 @@ import Step1, { roofTypeList } from "./Step1.vue";
 import Step2 from "./Step2.vue";
 import Step3 from "./Step3.vue";
 
+const { t } = useI18n();
+
 const emit = defineEmits([
   "drawRoof",
   "drawWaterUsage",
@@ -61,7 +63,7 @@ const washingMachineConnected = ref<boolean>(false)
 const residentNumber = ref<number>(0)
 
 
-defineProps<{
+@@ -73,5 +70,4 @@ defineProps<{
   // step 1
   roofSurface: number,
   roofCenter?: L.LatLng | L.LatLngLiteral,

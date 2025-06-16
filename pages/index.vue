@@ -23,6 +23,7 @@
         @polygon:deleted="onPolygonDeleted"
       />
     </div>
+    
   </div>
 </template>
 
