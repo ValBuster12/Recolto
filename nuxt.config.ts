@@ -52,6 +52,9 @@ export default defineNuxtConfig({
         name: "English"
       }
     ],
-    defaultLocale: 'fr-FR',
+    defaultLocale: 'en-US',
+    compilation: {
+      strictMessage: false,
+    },
   },
 });
