@@ -45,14 +45,11 @@ import Step1, { roofTypeList } from "./Step1.vue";
 import Step2 from "./Step2.vue";
 import Step3 from "./Step3.vue";
 
-const { t } = useI18n();
-
 const emit = defineEmits([
   "drawRoof",
   "drawWaterUsage",
   "newCenter",
 ]);
-
 
 const roofType = ref<RoofType>(roofTypeList[0])
 const selectedSewageSystem = ref<boolean>(true)
@@ -73,5 +70,4 @@ defineProps<{
   surfaceVegetableDrawn: number,
   forceResetInput: null | { area: "garden" | "vegetable", newValue: number },
 }>();
-
 </script>
