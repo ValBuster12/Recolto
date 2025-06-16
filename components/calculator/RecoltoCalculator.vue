@@ -63,7 +63,7 @@ const washingMachineConnected = ref<boolean>(false)
 const residentNumber = ref<number>(0)
 
 
-@@ -73,5 +70,4 @@ defineProps<{
+const props = defineProps<{
   // step 1
   roofSurface: number,
   roofCenter?: L.LatLng | L.LatLngLiteral,
