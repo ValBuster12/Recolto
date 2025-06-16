@@ -154,30 +154,7 @@
       </div>
     </UsageAccordion>
 
-    <div class="flex flex-row mt-2 justify-between">
-      <UButton
-        size="xl"
-        color="white"
-        variant="outline"
-        :trailing="false"
-        @click="$emit('previous')"
-        class="sm:h-12 sm:w-48 my-2 flex justify-center items-center"
-        :ui="{ variant: { outline: 'shadow-sm bg-transparent text-white-900 dark:text-white ring-1 ring-inset ring-white dark:ring-white-400 focus:ring-2 focus:ring-purple dark:focus:ring-white hover:bg-purple' }}"
-      >
-        {{ t("calculator.previous_step") }}
-      </UButton>
-      <UButton
-        icon="i-heroicons-calculator"
-        size="xl"
-        color="white"
-        variant="outline"
-        :trailing="false"
-        @click="$emit('next')"
-        class="sm:h-12 sm:w-48 my-2 bg-purple border border-white flex justify-center items-center disabled:bg-purple-300 ring-purple hover:bg-purple-900"
-      >
-        {{ t("step2.compute") }}
-      </UButton>
-    </div>
+
 
   </SubStep>
 </template>
@@ -189,7 +166,7 @@ import UsageAccordion from "./UsageAccordion.vue";
 
 const { t } = useI18n();
 
-const emit = defineEmits(["next", "drawWaterUsage", "previous"]);
+const emit = defineEmits(["drawWaterUsage"]);
 
 const surfaceGarden = defineModel<number>('surfaceGarden', {required: true})
 const surfaceVegetable = defineModel<number>('surfaceVegetable', {required: true})
