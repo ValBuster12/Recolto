@@ -35,6 +35,7 @@
     "garden_irrigation": "Garden boundary",
     "veg_garden_irrigation": "Potager boundary",
     "interior_uses": "Interior use",
+    "exterior_uses": "Exterior use",
     "interior_uses_prompt": "Would your water collector be connected to:",
     "toilets": "toilets",
     "washing_machine": "a washing machine?",
