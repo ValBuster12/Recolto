@@ -3,7 +3,8 @@
 </template>
 <script setup lang="ts">
 import Plotly from "plotly.js-dist-min";
-import { RainDataByMonth, PrecipitationScenario, WaterNeedsByMonth, WaterByMonth } from '~/declaration';
+import { PrecipitationScenario, WaterNeedsByMonth, WaterByMonth } from '~/declaration';
+const { t } = useI18n();
 
 const props = defineProps<{
   roofPotentialWaterCollect?: WaterByMonth,
@@ -14,7 +15,20 @@ const props = defineProps<{
 
 const drawGraph = () => {
   const data: Partial<Plotly.PlotData>[] = []
-  const x = ["Janv", "Févr", "Mars", "Avril", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"]
+  const x = [
+    t('months.jan'),
+    t('months.feb'),
+    t('months.mar'),
+    t('months.apr'),
+    t('months.may'),
+    t('months.jun'),
+    t('months.jul'),
+    t('months.aug'),
+    t('months.sep'),
+    t('months.oct'),
+    t('months.nov'),
+    t('months.dec')
+  ]
 
   if (props.roofPotentialWaterCollect) {
     data.push({
@@ -22,7 +36,7 @@ const drawGraph = () => {
       y: props.roofPotentialWaterCollect,
       hovertemplate: "%{y:.0f} L<extra></extra>",
       type: "bar",
-      name: `Potentiel de précipitations récupérables`,
+      name: t('step3.graph_rain_potential'),
       marker: {
         color: props.scenario === "nearest" ? "#29235c" : props.scenario === "driest" ? "#af6708" : "#085421",
         opacity: 0.8,
@@ -35,7 +49,7 @@ const drawGraph = () => {
       y: props.waterNeeds,
       hovertemplate: "%{y:.0f} L<extra></extra>",
       type: "bar",
-      name: "Besoin en eau de pluie par mois",
+      name: t('step3.graph_water_needs'),
       marker: { color: "#009fe3" },
     })
   }
@@ -45,7 +59,7 @@ const drawGraph = () => {
       y: props.waterCollectorLevel,
       hovertemplate: "%{y:.0f} L<extra></extra>",
       type: "scatter",
-      name: "Évolution du stockage au sein du récupérateur",
+      name: t('step3.graph_storage_evolution'),
       marker: { color: "#9b093e", size: 6, opacity: 0.8 },
       line: { dash: "dot", shape: "spline", width: 2.5 },
     })

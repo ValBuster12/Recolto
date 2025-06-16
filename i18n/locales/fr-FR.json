@@ -63,7 +63,24 @@
       "communal": "dans votre commune",
       "departemental": "dans votre département",
       "national": "au niveau national"
-    }
+    },
+    "graph_rain_potential": "Potentiel de précipitations récupérables",
+    "graph_water_needs": "Besoin en eau de pluie par mois",
+    "graph_storage_evolution": "Évolution du stockage au sein du récupérateur"
+  },
+  "months": {
+    "jan": "Janv",
+    "feb": "Févr",
+    "mar": "Mars",
+    "apr": "Avril",
+    "may": "Mai",
+    "jun": "Juin",
+    "jul": "Juil",
+    "aug": "Août",
+    "sep": "Sept",
+    "oct": "Oct",
+    "nov": "Nov",
+    "dec": "Déc"
   },
   "yes": "Oui",
   "no": "Non",
