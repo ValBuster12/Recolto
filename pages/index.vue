@@ -1,15 +1,5 @@
 <template>
   <div class="flex flex-col md:flex-row flex-grow">
-    <div class="md:w-1/2 order-2 md:order-none">
-      <recolto-map
-        class="h-80 md:h-full"
-        :draw-enabled="drawEnabled"
-        :center="center"
-        @polygon:created="onPolygonCreated"
-        @polygon:edited="onPolygonEdited"
-        @polygon:deleted="onPolygonDeleted"
-      />
-    </div>
     <div class="md:w-1/2 flex">
       <recolto-calculator
         class="w-full overflow-auto"
@@ -26,6 +16,17 @@
         @disable-draw="drawEnabled = undefined"
       />
     </div>
+    <div class="md:w-1/2 order-2 md:order-none">
+      <recolto-map
+        class="h-80 md:h-full"
+        :draw-enabled="drawEnabled"
+        :center="center"
+        @polygon:created="onPolygonCreated"
+        @polygon:edited="onPolygonEdited"
+        @polygon:deleted="onPolygonDeleted"
+      />
+    </div>
+    
   </div>
 </template>
 
