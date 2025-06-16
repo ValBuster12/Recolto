@@ -8,9 +8,6 @@
       :number="1"
       :title="t('step1.substep1')"
     >
-      <template v-slot:subtitle>
-        {{ t("step1.roof_type_info") }}
-      </template>
       <div class="flex gap-3 flex-wrap justify-between">
         <UButton
           v-for="option of roofTypeList"
@@ -34,9 +31,6 @@
       :number="2"
       :title="t('step1.substep2')"
     >
-      <template v-slot:subtitle>
-        {{ t("step1.draw_roof_info") }}
-      </template>
       <div v-if="!props.roofSurface">
         <UButton
           icon="i-heroicons-paint-brush-20-solid"
@@ -54,6 +48,18 @@
         <p class="w-1/3 text-lg md:text-xl font-bold flex justify-end self-center">
           {{ (props.roofSurface).toLocaleString(locale) }}&nbsp;m²
         </p>
+        <UButton
+          v-if="roofSurface"
+          icon="i-heroicons-paint-brush-20-solid"
+          color="white"
+          variant="outline"
+          :trailing="false"
+          @click="$emit('drawRoof', { area: 'roof' })"
+          class="sm:h-12 sm:w-48 mx-auto my-2 flex justify-center items-center"
+          :ui="{ variant: { outline: 'shadow-sm bg-transparent text-white-900 dark:text-white ring-1 ring-inset ring-white dark:ring-white-400 focus:ring-2 focus:ring-purple dark:focus:ring-white hover:bg-purple' }}"
+        >
+          {{ t("calculator.redraw") }}
+        </UButton>
       </div>
     </SubStep>
     <SubStep
@@ -78,20 +84,6 @@
         </label>
       </div>
     </SubStep>
-  </div>
-  <div class="flex flex-row mt-2">
-    <UButton
-      v-if="roofSurface"
-      icon="i-heroicons-paint-brush-20-solid"
-      color="white"
-      variant="outline"
-      :trailing="false"
-      @click="$emit('drawRoof', { area: 'roof' })"
-      class="sm:h-12 sm:w-48 mx-auto my-2 flex justify-center items-center"
-      :ui="{ variant: { outline: 'shadow-sm bg-transparent text-white-900 dark:text-white ring-1 ring-inset ring-white dark:ring-white-400 focus:ring-2 focus:ring-purple dark:focus:ring-white hover:bg-purple' }}"
-    >
-      {{ t("calculator.redraw") }}
-    </UButton>
   </div>
 </template>
 

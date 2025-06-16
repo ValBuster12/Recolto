@@ -3,9 +3,6 @@
     :number="4"
     :title="t('step2.substep4')"
   >
-    <template v-slot:subtitle>
-      {{ t("step2.usage_info") }}
-    </template>
     <UsageAccordion :title="t('step2.exterior_uses')">
       <div class="flex flex-col">
         <p class="mb-2 mx-2 justify-center text-base text-center my-2">
@@ -80,82 +77,6 @@
         </div>
       </div>
     </UsageAccordion>
-    <UsageAccordion :title="t('step2.interior_uses')">
-      <div class="flex flex-col items-start text-base text-left">
-        <p class="mb-2">{{ t("step2.interior_uses_prompt") }}</p>
-        <ul class="list-disc pl-5 mb-4">
-          <li>
-            <span class="mr-2">{{ t("step2.toilets") }}</span>
-            <UToggle
-              class="mr-2"
-              name="toiletsConnected" id="toiletsConnected"
-              on-icon="i-heroicons-check-20-solid"
-              off-icon="i-heroicons-x-mark-20-solid"
-              v-model="toiletsConnected"
-              :ui="{
-                active: 'bg-purple-900 dark:bg-slate-700',
-                inactive: 'bg-gray-700 dark:bg-slate-500'
-              }"
-            />
-            <label for="toiletsConnected">
-              {{ toiletsConnected ? t("yes") : t("no") }}
-            </label>
-          </li>
-          <li>
-            <span class="mr-2">{{ t("step2.washing_machine") }}</span>
-            <UToggle
-              class="mr-2"
-              name="washingMachineConnected" id="washingMachineConnected"
-              on-icon="i-heroicons-check-20-solid"
-              off-icon="i-heroicons-x-mark-20-solid"
-              v-model="washingMachineConnected"
-              :ui="{
-                active: 'bg-purple-900 dark:bg-slate-700',
-                inactive: 'bg-gray-700 dark:bg-slate-500'
-              }"
-            />
-            <label for="washingMachineConnected">
-              {{ washingMachineConnected ? t("yes") : t("no") }}
-            </label>
-          </li>
-        </ul>
-        <div class="inline" for="residentNumber">
-          <p class="mb-2">{{ t("step2.occupancy") }}</p>
-          <div
-            class="w-full flex items-center justify-center"
-          >
-            <UInput
-              inputClass="h-10 dark:bg-slate-700 bg-white"
-              type="number"
-              :min="0"
-              :color="isErrorResidentNumber ? 'red' : 'white'"
-              v-model.number="residentNumber"
-            />
-            <p> {{ t("step2.persons") }}</p>
-          </div>
-        </div>
-      </div>
-    </UsageAccordion>
-    <UsageAccordion :title="t('step2.other_uses')">
-      <template v-slot:help>
-        {{ t("step2.other_uses_info") }}
-      </template>
-      <div
-        class="w-full flex items-center justify-center"
-      >
-        <UInput
-          inputClass="h-10 dark:bg-slate-700 bg-white"
-          type="number"
-          :min="0"
-          :color="isErrorExteriorMaintenance ? 'red' : 'white'"
-          v-model.number="otherNeeds"
-        />
-        <p>&nbsp;{{ t("L_per_year") }}</p>
-      </div>
-    </UsageAccordion>
-
-
-
   </SubStep>
 </template>
 
