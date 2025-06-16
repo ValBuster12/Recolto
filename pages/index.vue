@@ -2,11 +2,6 @@
   <div class="flex-grow relative">
     <recolto-calculator
       class="absolute bottom-0 left-0 right-0 md:top-[10px] md:left-[10px] md:right-[unset] md:bottom-[unset] z-[1002] overflow-auto md:max-h-[95%] scrolling-auto"
-      :class="{
-        'h-[30rem] md:h-[95%] scrolling-auto overflow-auto': currentStep === 2
-      }"
-
-      v-model:current-step="currentStep"
 
       :roof-surface="roofSurface"
       :roof-center="roofCenter"
@@ -56,8 +51,6 @@ const forceResetInput= ref<null | {
   area: "garden" | "vegetable",
   newValue: number
 }>(null);
-
-const currentStep = ref(0);
 
 const drawEnabled = ref<{ area: "roof" | "garden" | "vegetable" | "allUsage", action?: "draw" | "clear" }>();
 
