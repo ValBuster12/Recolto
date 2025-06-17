@@ -4,17 +4,11 @@ import { generateSidebar } from 'vitepress-sidebar'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'fr',
-  title: "Documentation Recolt'Ô",
+  title: "Documentation",
   description: '',
   srcDir: "content",
   base: "/",
   metaChunk: false,
-  head: [
-    ['link', {
-      rel: 'icon',
-      href: "/favicon.ico"
-    }]
-  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.svg',
