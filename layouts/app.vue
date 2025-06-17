@@ -51,17 +51,6 @@
       <p class="font-bold mb-4">
         Ce site est une démo du logiciel.
       </p>
-
-      <p class="mb-4">
-        Ce projet est une initiative de <a class="underline" href="https://makina-corpus.com/territoires" target="_blank">Makina Corpus Territoires</a>.
-      </p>
-      <a href="https://makina-corpus.com" target="_blank">
-        <img
-          class="mx-auto max-w-xs w-32"
-          src="/assets/MC_Territoires_LOGO_Carre_Quadri.svg"
-          alt="Logo de Makina Corpus Territoires"
-        />
-      </a>
       <hr class="flex md:hidden my-4">
       <div class="flex md:hidden my-4 gap-2">
         <UButton
