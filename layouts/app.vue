@@ -6,13 +6,7 @@
       >
         
         <div class="flex items-center gap-2">
-          <UButton
-            class="hidden md:block"
-            :label="t('layout.give_opinion')"
-            color="white"
-            to="https://framaforms.org/donnez-votre-avis-sur-1739970454"
-            target="_blank"
-          />
+          
           <UDropdown
             :items="localeOptions"
             :popper="{ placement: 'bottom-start' }"
