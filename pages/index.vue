@@ -141,7 +141,7 @@ const onPolygonDeleted = (geodesicArea: number, area: string) => {
 };
 
 useHead({
-  title: "Récolt'Ô | Calculateur",
+  title: "Calculateur",
 });
 </script>
 

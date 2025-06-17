@@ -4,13 +4,7 @@
       <div
         class="flex justify-between items-center mx-auto p-2 md:p-4"
       >
-        <NuxtLink to="/">
-          <img
-            class="max-w-xs h-8 md:h-12"
-            src="/assets/logo_recolto_blanc.png"
-            alt="Logo de Récolt'Ô"
-          />
-        </NuxtLink>
+        
         <div class="flex items-center gap-2">
           <UButton
             class="hidden md:block"
@@ -61,12 +55,7 @@
         @click="isAboutModalOpen = false"
       />
       <p class="font-bold mb-4">
-        Ce site est une démo du logiciel <a href="https://recolto.fr/" target="_blank" class="underline">Recolt'Ô</a>.
-      </p>
-
-      <p class="mb-4">
-        Le code source du logiciel est disponible
-        sur <a href="https://github.com/makinacorpus/Recolto" target="_blank" class="underline">son dépôt github</a> sous licence MIT.
+        Ce site est une démo du logiciel.
       </p>
 
       <p class="mb-4">
