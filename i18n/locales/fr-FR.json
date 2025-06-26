@@ -16,6 +16,7 @@
     "no_results": "Aucun résultat trouvé",
     "geoloc_tooltip": "Zoomer sur ma position"
   },
+  "address_label": "Adresse :",
   "step1": {
     "substep1": "Quel est votre type de toiture ?",
     "roof_type_info": "Certains matériaux ou formes de toit perdent ± d’eau selon le volume qu’il tombe. Un coefficient de perte est pris en compte.",

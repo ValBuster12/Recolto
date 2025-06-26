@@ -1,5 +1,6 @@
 <template>
   <div class="md:mb-2">
+    <label class="font-semibold mb-1 block">{{ t('address_label') }}</label>
     <SearchBar
       class="mb-6"
       @new-location="$emit('newCenter', $event)"
@@ -87,6 +88,17 @@
         </label>
       </div>
     </SubStep>
+    <div class="flex justify-center mt-4">
+      <UButton
+        color="white"
+        variant="outline"
+        :trailing="false"
+        @click="$emit('calculate')"
+        class="h-8 w-32 md:h-12 md:w-48 bg-purple hover:bg-purple-900 focus:ring-2"
+      >
+        {{ t('step2.compute') }}
+      </UButton>
+    </div>
   </div>
 </template>
 
@@ -111,6 +123,7 @@ const emit = defineEmits([
   "newCenter",
   "select",
   "drawRoof",
+  "calculate",
 ]);
 
 const roofType = defineModel<RoofType>('roofType', { required: true })
