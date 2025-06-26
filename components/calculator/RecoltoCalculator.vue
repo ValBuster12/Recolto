@@ -10,6 +10,7 @@
         v-model:has-sewage-system="selectedSewageSystem"
         @new-center="$emit('newCenter', $event)"
         @draw-roof="$emit('drawRoof', $event)"
+        @calculate="showResults = true"
       />
       <Step2
         v-model:surface-garden="surfaceGarden"
@@ -24,6 +25,7 @@
         @draw-water-usage="$emit('drawWaterUsage', $event)"
       />
       <Step3
+        v-if="showResults"
         :roof-surface="roofSurface"
         :roof-absorbtion-coeff="roofType.coeff"
         :roof-center="roofCenter"
@@ -61,6 +63,7 @@ const otherNeeds = ref<number>(0)
 const toiletsConnected = ref<boolean>(false)
 const washingMachineConnected = ref<boolean>(false)
 const residentNumber = ref<number>(0)
+const showResults = ref(false)
 
 
 const props = defineProps<{
