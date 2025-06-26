@@ -34,6 +34,7 @@ import RecoltoCalculator from "../components/calculator/RecoltoCalculator.vue";
 
 definePageMeta({
   layout: "app",
+  middleware: ["auth"],
 });
 
 /**

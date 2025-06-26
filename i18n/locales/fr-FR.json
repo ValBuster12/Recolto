@@ -88,5 +88,12 @@
   "or": "ou",
   "in": "en",
   "L_per_year": "L/an",
-  "euro_per_year": "€/an"
+  "euro_per_year": "€/an",
+  "login": {
+    "title": "Connexion",
+    "username": "Identifiant",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "error": "Identifiants invalides"
+  }
 }
