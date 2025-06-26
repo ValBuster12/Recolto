@@ -87,5 +87,12 @@
   "no": "No",
   "or": "or",
   "L_per_year": "L/year",
-  "euro_per_year": "€/year"
+  "euro_per_year": "€/year",
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Log in",
+    "error": "Invalid credentials"
+  }
 }
