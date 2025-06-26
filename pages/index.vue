@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col md:flex-row flex-grow">
-    <div class="md:w-1/2 flex">
+    <div class="md:w-[30%] flex">
       <recolto-calculator
         class="w-full"
         :roof-surface="roofSurface"
@@ -13,7 +13,7 @@
         @draw-water-usage="allowDrawMap($event)"
       />
     </div>
-    <div class="md:w-1/2 order-2 md:order-none">
+    <div class="md:w-[70%] order-2 md:order-none">
       <recolto-map
         class="h-80 md:h-full"
         :draw-enabled="drawEnabled"
