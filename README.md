@@ -1,34 +1,26 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2a8dd64d-a24e-495b-93bc-d1ec3382cf89/deploy-status)](https://app.netlify.com/sites/recolto/deploys) [![Documentation](https://readthedocs.org/projects/recolto/badge/?version=latest)](https://recolto.readthedocs.io/)
-[![GitHub stars](https://img.shields.io/github/stars/makinacorpus/RecoltO)](https://github.com/makinacorpus/RecoltO/stargazers)
+# Welcome
 
-![RecoltO](/public/assets/logo_recolto_violet.png)
+This is the official repository for the 2024 Open Booster.
 
-
-# Welcome to Récolt'Ô
-
-The official Récolt'Ô repository for the 2024 Open Booster.
-
-👉🏻 [Try Récolt'Ô](https://recolto.netlify.app/)
 
 In March 2023, water tables remain below normal, with 80% of levels between low and very low. Faced with the problems caused by our personal uses, how can we avoid using drinking water when rainwater would be perfectly suitable? What savings could I make by installing a water recovery system? With the global warning, will my installation still be suitable in 2, 5 or 10 years' time?
 
-Récolt'Ô is designed to support the deployment of water recovery systems on all types of buildings. There's a wide range of products on the market, but how do you choose the right size of tank? And to which roof pitch should it be connected? Récolt'Ô will help you determine the right tank volume based on local rainfall forecasts and individual water usage, while providing an unbiased estimate of expected savings.
+This project is designed to support the deployment of water recovery systems on all types of buildings. There's a wide range of products on the market, but how do you choose the right size of tank? And to which roof pitch should it be connected? The application will help you determine the right tank volume based on local rainfall forecasts and individual water usage, while providing an unbiased estimate of expected savings.
 
-![image](https://makina-corpus.com/sites/default/files/styles/600x500/public/2023-11/image.png.webp?itok=W9s7EmsA)
 
 The benefits of this solution are manifold:
 * **Optimization of water consumption**: By using rainwater for non-potable needs such as watering gardens, washing tools, or even toilets, users can reduce their dependence on drinking water, helping to preserve this precious resource.
-* **Adaptability to changing weather conditions**: Thanks to climate and usage simulations, Récolt'Ô can determine the right tank volume for each situation, guaranteeing efficient, sustainable use of rainwater, even in a changing climate.
-* **Reduced pressure on drinking water networks**: By encouraging the use of rainwater for non-drinking needs, Récolt'Ô helps to relieve the pressure on drinking water networks, reducing the risk of shortages and over-consumption.
+* **Adaptability to changing weather conditions**: Thanks to climate and usage simulations, the tool can determine the right tank volume for each situation, guaranteeing efficient, sustainable use of rainwater, even in a changing climate.
+* **Reduced pressure on drinking water networks**: By encouraging the use of rainwater for non-drinking needs, the tool helps to relieve the pressure on drinking water networks, reducing the risk of shortages and over-consumption.
 
-By combining technological expertise, predictive analysis and a commitment to ecological resilience, Récolt'Ô represents an innovative and effective solution to the growing challenges of water management. By adopting Récolt'Ô, private individuals and professionals can not only contribute to preserving the environment, but also make significant savings on their drinking water consumption, while ensuring responsible use of natural resources.
+By combining technological expertise, predictive analysis and a commitment to ecological resilience, the solution represents an innovative and effective response to the growing challenges of water management. By adopting this solution, private individuals and professionals can not only contribute to preserving the environment, but also make significant savings on their drinking water consumption, while ensuring responsible use of natural resources.
 
 
 ## Data Story and Architecture
 
 ![Architecture diagram](project_architecture.png)
 
-Récolt'Ô integrates multiple datasets to deliver precise water management insights:
+The application integrates multiple datasets to deliver precise water management insights:
 
 - **calculating roof surface area**
 Using the [BAN API](https://www.data.gouv.fr/fr/dataservices/api-adresse-base-adresse-nationale-ban/) we convert addresses into precise latitude and longitude coordinates, enabling us to center satellite imagery on the desired building and accurately measure its roof area.
@@ -75,7 +67,7 @@ npm run preview
 ```
 
 ### Environment variables
-The `.env` file can be used to store parameters or settings that may change across Récolt'Ô instances.
+The `.env` file can be used to store parameters or settings that may change across different instances.
 
 > /!\ DON’T COMMIT SECRETS (API keys, passwords…) THERE!!
 
@@ -83,15 +75,15 @@ To help you setup, another file, `.env.example` is provided.
 
 ## Contributing
 
-You want to help to build and improve Récolt'Ô? Here is want you can do:
+You want to help to build and improve this project? Here is what you can do:
 - Talk about it: share this project to make it more visible
-- Report bugs you find: [Reporting issues](https://github.com/makinacorpus/Recolto/issues) is essential to help us improve this tool. Feel confident enough to correct it? PRs are welcome!
-- Want to add missing functionnality? Create an [issue](https://github.com/makinacorpus/Recolto/issues)!
-- Want to start developing ? Look at ["good first issues"](https://github.com/makinacorpus/recolto/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+- Report bugs you find via the issue tracker. Feel confident enough to correct it? PRs are welcome!
+- Want to add missing functionality? Open an issue!
+- Want to start developing? Look at the issues labeled "good first issue".
 
 ## Looking Forward
 
-Here's a summary of how Récolt'Ô can be extended to provide an even better experience for the community:
+Here's a summary of how this project can be extended to provide an even better experience for the community:
 - Using climate projection data. By going further and exploring the use of data from different climate change scenarios, we hope to raise awareness among service users of the challenges of saving on their water consumption and encourage changes in behavior.
 - Expand information on the uses that rainwater could cover. Enable users to record their simulated water consumption to derive more precise estimates of how much water the user needs to collect.
 - Automatically detect the roof of one or more buildings based on an address.
@@ -100,7 +92,7 @@ Here's a summary of how Récolt'Ô can be extended to provide an even better exp
 
 
 ## Adding other languages
-As of 2025, Récolt'Ô is available in French and English. To add another locale,
+As of 2025, the application is available in French and English. To add another locale,
 - add the code, file and name in the `nuxt.config.ts`, in the object `i18n`
 - add the translation file into `i18n/locales`, you can copy an existing one and translate the strings by hand (for now)
 
