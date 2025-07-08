@@ -54,7 +54,7 @@ const emit = defineEmits<{
 
 const currentAddress = ref<ApiAddress>()
 const searchAddress = async (addressToSearch: string) => {
-  if (addressToSearch.length >= 3) {
+  if (addressToSearch.length >= 3 && addressToSearch[addressToSearch.length - 1]!==" ") {
     const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${addressToSearch}&limit=3`);
     const res = await response.json();
     return res.features;
